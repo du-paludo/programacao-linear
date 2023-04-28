@@ -2,7 +2,7 @@ PROG = producao
 CC = gcc #-std=c11
 OBJS = main.o producao.o
 
-.PHONY: all debug clean limpa purge faxina
+.PHONY: all debug clean purge
 
 %.o: %.c %.h
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -10,11 +10,9 @@ OBJS = main.o producao.o
 $(PROG) : % : $(OBJS) %.o
 	$(CC) $(CFLAGS) -o $@ $^ $(LFLAGS)
 
-clean limpa:
-	@echo "Limpando ...."
+clean:
 	@rm -f *~ *.bak *.tmp
 
-purge faxina: clean
-	@echo "Faxina ...."
+purge: clean
 	@rm -f  $(PROG) $(PROG_AUX) *.o $(OBJS) core a.out
 	@rm -f *.png marker.out *.log
