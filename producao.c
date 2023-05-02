@@ -2,12 +2,15 @@
 
 void lp_solve_format(int n, int m, int* precos, int** compostos, float** quantidades) {
     // escreve o problema no formato lp_solve
+    float soma = 0;
+    
     printf("max: ");
     for (int i = 0; i < n; i++) {
-        printf("%ix%i", precos[i], i + 1);
+        soma = precos[i];
         for (int j = 0; j < m; j++) {
-            printf(" - %fx%i", compostos[j][0] * quantidades[i][j], i + 1);
+            soma -= compostos[j][0] * quantidades[i][j];
         }
+        printf("%fx%i", soma, i + 1);
         if (i < n - 1)
             printf(" + ");
     }

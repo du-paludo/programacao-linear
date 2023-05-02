@@ -1,5 +1,6 @@
 PROG = producao
-CC = gcc #-std=c11
+CC = gcc
+CFLAGS = -Wall -std=c99
 OBJS = main.o producao.o
 
 .PHONY: all debug clean purge
@@ -7,7 +8,7 @@ OBJS = main.o producao.o
 %.o: %.c %.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(PROG) : % : $(OBJS) %.o
+$(PROG): % : $(OBJS) %.o
 	$(CC) $(CFLAGS) -o $@ $^ $(LFLAGS)
 
 clean:

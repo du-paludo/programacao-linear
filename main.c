@@ -17,7 +17,6 @@ int main() {
     for (int i = 0; i < n; i++)
         quantidades[i] = malloc(m * sizeof(float));
 
-
     for (int i = 0; i < n; i++)
         scanf("%i", &precos[i]); // preços de venda (v_i) de cada produto
 
