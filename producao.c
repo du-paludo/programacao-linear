@@ -1,8 +1,8 @@
 #include <stdio.h>
 
-void lp_solve_format(int n, int m, int* precos, int** compostos, float** quantidades) {
+void lp_solve_format(int n, int m, double* precos, double** compostos, double** quantidades) {
     // escreve o problema no formato lp_solve
-    float soma = 0;
+    double soma = 0;
     
     printf("max: ");
     for (int i = 0; i < n; i++) {
@@ -10,7 +10,7 @@ void lp_solve_format(int n, int m, int* precos, int** compostos, float** quantid
         for (int j = 0; j < m; j++) {
             soma -= compostos[j][0] * quantidades[i][j];
         }
-        printf("%fx%i", soma, i + 1);
+        printf("%lfx%i", soma, i + 1);
         if (i < n - 1)
             printf(" + ");
     }
@@ -19,11 +19,11 @@ void lp_solve_format(int n, int m, int* precos, int** compostos, float** quantid
     // restrições de produção
     for (int j = 0; j < m; j++) {
         for (int i = 0; i < n; i++) {
-            printf("%fx%i", quantidades[i][j], i + 1);
+            printf("%lfx%i", quantidades[i][j], i + 1);
             if (i < n - 1)
                 printf(" + ");
         }
-        printf(" <= %i;\n", compostos[j][1]);
+        printf(" <= %lf;\n", compostos[j][1]);
     }
 
     // restrições de não-negatividade
